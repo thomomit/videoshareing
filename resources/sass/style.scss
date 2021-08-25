@@ -1,0 +1,334 @@
+html, body {
+  margin: 0;
+}
+
+.wrapper {
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 120px;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+.header-form {
+  text-align: center;
+
+  .header-search {
+    font-size: 1em;
+    padding: 0.4em 0.8em;
+    width: 258px;
+    height: 30px;
+  }
+}
+
+footer {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+/* =============================================
+ TOP
+============================================= */
+.top-list {
+  margin: 48px 0;
+
+  a {
+    text-decoration: none;
+    transition: all .3s ease 0s;
+
+    div {
+      color: #fff;
+      font-size: 28px;
+      width: 480px;
+      height: 60px;
+      line-height: 60px;
+      background-color: #0068B2;
+      border-radius: 8px;
+      display: block;
+      text-align: center;
+      margin: 0 auto 40px;
+      box-shadow: 0 6px #0d5082;
+      cursor: pointer;
+    }
+  }
+}
+/* =============================================
+ VIDEO POST
+============================================= */
+.post-form {
+  margin: 0 auto 48px;
+  width: 40%;
+  
+  .form-messeage {
+    text-align: center;
+  }
+
+  form {
+    margin-top: 48px;
+
+    dl {
+      display: flex;
+      margin: 0 0 20px 0;
+      line-height: 34px;
+
+      .text {
+        appearance: none;
+        background-color: transparent;
+        background-image: none;
+        border: 0.5px solid #000;
+        border-radius: 2px;
+        color: inherit;
+        font-family: inherit;
+        font-size: 1em;
+        padding: 0.4em 0.8em;
+        width: 258px;
+        height: 16px;
+      }
+
+      .select {
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        appearance: none;
+        background: transparent url(/storage/image/check.png) no-repeat center right 12px/10px 9px;
+        border: 0.5px solid #000;
+        border-radius: 2px;
+        color: inherit;
+        cursor: pointer;
+        font-family: inherit;
+        font-size: 1em;
+        padding: 0.4em 0.8em;
+        width: 178px;
+        height: 34px;
+      }
+    }
+  }
+  .submit {
+    -webkit-appearance: none;
+    background-image: none;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    width: 293px;
+    height: 50px;
+    line-height: 50px;
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+    background-color: #0068B2;
+    border-radius: 5px;
+    display: block;
+    font-size: 20px;
+    box-shadow: 0 4px #0d5082;
+    margin: 48px auto 0;
+  }
+}
+/* =============================================
+ VIDEO LIST
+============================================= */
+.venue-body-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .venue-body-item {
+    padding-top: 5px;
+    margin: 0 15px 15px;
+    width: calc(100% / 3 - 30px);
+    border: 2px solid #147DB2;
+    background-color: #C9E3F7;
+    cursor: pointer;
+
+    .venue-body-img {
+      width: 100%;
+      height: 150px;
+      border: none;
+      -o-object-position: top;
+      object-position: top;
+      -o-object-fit: cover;
+      object-fit: cover;
+    }
+
+    .venue-body-content {
+      font-size: 18px;
+      line-height: 1.5;
+      text-align: center;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      height: 100px;
+    }
+  }
+}
+/* =============================================
+ VIDEO MANAGE
+============================================= */
+.control-table {
+  border: 1px solid #707070;
+  border-collapse: collapse;
+  margin-top: 25px;
+  margin-bottom: 70px;
+  margin: 0 auto;
+
+  .control-table-left {
+    width: 250px;
+  }
+
+  th {
+    border: 1px solid #707070;
+    width: 142px;
+    height: 50px;
+  }
+
+  tr, td {
+    border: 1px solid #707070;
+    width: 142px;
+    height: 50px;
+    text-align: center;
+    padding: 0;
+
+    .control-table-image {
+      width: 100%;
+      height: auto;
+      cursor: pointer;
+    }
+
+    .control-table-df {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .control-date {
+      line-height: 30px;
+    }
+
+    .control-view {
+      line-height: 140px;
+    }
+
+    .control-edit a {
+      width: 98px;
+      height: 30px;
+      line-height: 30px;
+      background-color: #147DB2;
+      color: #fff;
+      display: inline-block;
+      border-radius: 15px;
+    }
+  }
+}
+
+/* =============================================
+ MODAL
+============================================= */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1050;
+  display: none;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  outline: 0;
+
+  .modal-dialog {
+    position: relative;
+    width: auto;
+    margin: 0.5rem;
+    pointer-events: none;
+  }
+  .modal-dialog-centered {
+    display: flex;
+    align-items: center;
+    max-width: 800px;
+    margin: 1.75rem auto;
+    min-height: calc(100% - 3.5rem);
+  }
+  .show .modal-dialog {
+    transform: none;
+  }
+  .fade .modal-dialog {
+    transition: transform 0.3s ease-out;
+    transform: translate(0, -50px);
+    &::before {
+      display: block;
+      height: calc(100vh - 1rem);
+      height: -webkit-min-content;
+      height: -moz-min-content;
+      height: min-content;
+      content: "";
+    }
+  }
+  .modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 0.3rem;
+    outline: 0;
+
+    .modal-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding: 1rem 1rem;
+      border-top-left-radius: calc(0.3rem - 1px);
+      border-top-right-radius: calc(0.3rem - 1px);
+
+      .close {
+        padding: 1rem 1rem;
+        margin: -1rem -1rem -1rem auto;
+        border: none;
+        height: 40px;
+        width: 40px;
+      }
+    }
+
+    .modal-body {
+      position: relative;
+      flex: 1 1 auto;
+      padding: 1rem;
+
+      video {
+        width: 100%;
+        cursor: pointer;
+      }
+
+      .confirm-box dl, .modal-footer {
+        display: flex;
+      }
+
+      .venue-top-ballon-body-reaction {
+        color: #fff;
+        background-color: #6D4491;
+        border-radius: 20px;
+        border: none;
+        padding: 0;
+        text-align: center;
+        width: 85px;
+        height: 24px;
+        line-height: 24px;
+        box-shadow: 0 3px #4a3066;
+        margin-bottom: 15px;
+        cursor: pointer;
+      }
+    }
+  }
+}
+.modal-open .modal {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
