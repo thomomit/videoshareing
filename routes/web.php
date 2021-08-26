@@ -66,9 +66,6 @@ Route::get('/thumbnail/{filename}', function ($filename){
 /** MAKE THUMNAME API(NEW ONE) */
 Route::get ('/convert', 'TPostController@convertVideo');
 
-/** MAKE THUMNAME API(ALL) */
-Route::get ('/debug/convert_all', 'TPostController@convertAllVideo');
-
 /** LIKE API */
 Route::post('/api/likeIt', 'TLikeController@likeIt');
 

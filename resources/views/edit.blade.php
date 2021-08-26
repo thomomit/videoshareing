@@ -12,9 +12,9 @@
                 @csrf
 
                 <dl class="form39">
-                    <dt><label for="team">TITLE</label></dt>
+                    <dt><label for="video_title">TITLE</label></dt>
                     <dd>
-                      <input class="text" name="team" id="team" value="{{ $post->team }}" type="text">
+                      <input class="text" name="video_title" id="video_title" value="{{ $post->video_title }}" type="text">
                     </dd>
                 </dl>
 
@@ -31,8 +31,6 @@
                 </dl>
                 <input type="hidden" name="id" value="{{ $post->id }}" />
                 <input type="hidden" name="create_at" value="{{ $post->create_at }}" />
-                <input type="hidden" name="title" value="{{ $post->title }}" />
-                <input type="hidden" name="user_id" value="{{ $post->user_id }}" />
                 <input class="submit" type="submit" style="margin-bottom: 24px" value="EDIT">
                 <div class="submit" type="button"><a href="{{ route('manage') }}" style="color: #fff;">CANCEL</a></div>
             </form>

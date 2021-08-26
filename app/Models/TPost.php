@@ -10,7 +10,7 @@ class TPost extends Model
     use HasFactory;
 
     protected $table = 't_post';
-    protected $fillable = ["title", "video_path", "converted", "thumbnail", "team", "view_mode", "create_at"];
+    protected $fillable = ["video_title", "video_path", "converted", "thumbnail", "file_name", "view_mode", "create_at"];
 
     public $timestamps = false;
 

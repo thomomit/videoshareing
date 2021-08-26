@@ -9,7 +9,7 @@
                     <tr class="control-table-head">
                         <td class="control-table-left"></td>
                         <th style="background-color: #E6E6E6;">TITLE</th>
-                        <th style="background-color: #F2F2F2;">PUBLIC / PRIVATE</th>
+                        <th style="background-color: #F2F2F2;">VIEW MODE</th>
                         <th style="background-color: #E6E6E6;">DATE</th>
                         <th style="background-color: #F2F2F2;">LIKES</th>
                         <th style="background-color: #E6E6E6;">VIEWS</th>
@@ -22,9 +22,9 @@
                     @endphp
                     @foreach($videos as $video)
                     <tr>
-                        <td><img class="control-table-image js-modal-open" data-toggle="modal" data-target="#Modal{{ $i }}" src="/thumbnail/{{ $video->thumbnail }}" alt={{ $video->title }} controls></td>
+                        <td><img class="control-table-image js-modal-open" data-toggle="modal" data-target="#Modal{{ $i }}" src="/thumbnail/{{ $video->thumbnail }}" alt={{ $video->video_title }} controls></td>
                         <td>
-                            <div class="control-date">{{ $video->title }}</div>
+                            <div class="control-date">{{ $video->video_title }}</div>
                         </td>
                         <td>
                             <div class="control-table-df">
@@ -70,7 +70,7 @@
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                 </div>
                                 <div class="modal-body">
-                                    <video style="width: 100%" preload muted="muted" type="video/mp4" playsinline id="vp" poster="/thumbnail/{{ $video->thumbnail }}" src="/video/{{ $video->converted }}" alt="投稿動画：{{ $video->team }}" controls></video>
+                                    <video style="width: 100%" preload muted="muted" type="video/mp4" playsinline id="vp" poster="/thumbnail/{{ $video->thumbnail }}" src="/video/{{ $video->converted }}" alt="{{ $video->video_title }}" controls></video>
                                 </div>
                             </div>
                         </div>

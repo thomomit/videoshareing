@@ -14,7 +14,7 @@
                 <div class="all-videos" data-no="{{ $videos->count() }}"></div>
                 <input type="hidden" name="modalNo" value="{{ $i }}" />
                 <img class="venue-body-img" src="/thumbnail/{{ $video->thumbnail }}" alt="">
-                <div class="venue-body-content">{{ $video->team }}<br><br>LIKES: {{ $video->iine_count }}<br>VIEWS: {{ $video->view_count }}
+                <div class="venue-body-content">{{ $video->video_title }}<br><br>LIKES: {{ $video->iine_count }}<br>VIEWS: {{ $video->view_count }}
                 </div>
             </button>
 
@@ -27,7 +27,7 @@
                             <button type="button" id="modal-close{{ $i }}" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         </div>
                         <div class="modal-body">
-                            <video loop id="modalV{{ $i }}" data-id="{{ $video->id }}" class="modal-video all-posts-modal" preload type="video/mp4" playsinline poster="/thumbnail/{{ $video->thumbnail }}" src="/video/{{ $video->converted }}" alt="{{ $video->team }}さんの挑戦"></video>
+                            <video loop id="modalV{{ $i }}" data-id="{{ $video->id }}" class="modal-video all-posts-modal" preload type="video/mp4" playsinline poster="/thumbnail/{{ $video->thumbnail }}" src="/video/{{ $video->converted }}" alt="{{ $video->video_title }}"></video>
                             
                             <div class="venue-top-ballon-body">
                                 <div class="venue-top-ballon-body-item reaction-count" video-id="iine-{{$video->id}}">

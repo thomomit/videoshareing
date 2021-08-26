@@ -352,7 +352,7 @@ footer {
 .modal .modal-content .modal-body .confirm-box dl {
   display: flex;
   margin: 12px auto;
-  width: 300px;
+  width: 500px;
 }
 
 .modal .modal-content .modal-body .confirm-box dl dt {

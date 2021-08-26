@@ -17,6 +17,7 @@ What you can do with this App is..
 - edit the posts　投稿動画の編集
 - search the posts　投稿動画の検索
 - LIKE on the posts　「いいね」機能
+- count the views of each posts 閲覧数カウント
 - show post's list　投稿動画の一覧表示
 - manage post's list　投稿動画の管理
 

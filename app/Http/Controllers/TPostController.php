@@ -26,22 +26,22 @@ class TPostController extends Controller
     }
 
     /**
-     * COMBINE DATAS
+     * COMBINE VIDEO FILES
      */
 	public function video_combine(Request $request){
 
-        $file_place = config('app.video').$request->name;
+        $video_path = config('app.video').$request->file_name;
         $file = $_FILES['file'];
 
         try {
-            file_put_contents($file_place, file_get_contents($file['tmp_name']), FILE_APPEND);
+            file_put_contents($video_path, file_get_contents($file['tmp_name']), FILE_APPEND);
         }
         catch (\Exception $ex) {
             echo json_encode(['err' => $ex]);
             return;
         }
 
-        echo json_encode(['size' => filesize($file_place)]);
+        echo json_encode(['size' => filesize($video_path)]);
     }
 
     /**
@@ -49,24 +49,86 @@ class TPostController extends Controller
      */
     public function video_save(Request $request){
 
-        $file_place = config('app.video').$request->name;
+        $video_path = config('app.video').$request->file_name;
+        
+		if($video_path){
 
-		if($file_place){
-            $title = $request->name;
-            $create_at = date("Y-m-d H:i:s");
-            $team =$request->team;
+            $video_title =$request->video_title;
+            $file_name = $request->file_name;
             $view_mode =$request->view_mode;
+            $create_at = date("Y-m-d H:i:s");
+
+            // SAVE TO DB
 			$tpost = TPost::create([
-                "title" => $title,
-                "video_path" => $file_place,
+                "file_name" => $file_name,
+                "video_path" => $video_path,
                 "create_at" => $create_at,
-                "team" => $team,
+                "video_title" => $video_title,
                 "view_mode" => $view_mode,
             ]);
-            $this->convertVideoFunc($title, $tpost->id);
+            $this->convertVideoFunc($file_name, $tpost->id);
 		}
-        return redirect('/mypage');
+        return redirect('/top');
 	}
+
+    /**
+     * MAKE THUMBNAIL(NEW ONE)
+     * @$fileName   File Name
+     */
+    public function convertVideo(Request $request) {
+        echo "OK";
+        return $this->convertVideoFunc($request->src, $request->pid);
+    }
+
+    public function convertVideoFunc($src, $pid) {
+        try {
+            $fileName = $src;
+            mb_internal_encoding("UTF-8");
+            $sp = explode('-', $fileName, 2);
+            if(count($sp) < 1) { return; }
+            $fname = $sp[0];
+
+            // FFMpeg
+            $fmt = new \FFMpeg\Format\Video\X264('aac');
+            $fmt->setKiloBitrate(500);
+
+            FFMpeg::fromDisk('video')
+                ->open($fileName)
+                ->export()
+                ->onProgress(function ($percentage) {
+                    echo "{$percentage}% transcoded";
+                })
+                
+                // make mp4 data
+                ->resize(660, 370, 'height')
+                ->toDisk('convert')
+                ->inFormat($fmt)
+                ->save($fname.".mp4")
+
+                // make jpg data
+                ->getFrameFromSeconds(2)
+                ->export()
+                ->toDisk('convert')
+                ->save($fname.".jpg")
+                ;
+
+            // SAVE TO DB
+            TPost::where('id', $pid)
+                ->update(['thumbnail' => $fname.".jpg", 'converted' => $fname.".mp4"]);
+
+        } catch(\Exception $ex) {
+
+            TPost::where('id', $pid)->where('video_title', $src)
+                ->update([
+                    'view_mode' => 0
+                    , 'error_comment' => 'Faild. Uploaded videos should be played on Windows Media Player. This will not be Public.'
+                    , 'thumbnail' => null
+                    , 'converted' => null
+                ]);
+            return "NG";
+        }
+        return "OK";
+    }
 
     /**
      * VIDEO MANAGE
@@ -113,9 +175,9 @@ class TPostController extends Controller
         $savedata = [    
             "create_at" =>  $request->create_at,
             "edit_at" =>  date("Y-m-d H:i:s"),
-            "team" => $request->team,
+            "video_title" => $request->video_title,
             "view_mode" => $request->view_mode,
-            "title" => $request->title,
+            "file_name" => $request->file_name,
         ];
         $post = TPost::findOrFail($request->id);
 
@@ -150,99 +212,6 @@ class TPostController extends Controller
     }
 
     /**
-     * MAKE THUMNAME(NEW ONE)
-     * @$fileName   File Name
-     */
-    public function convertVideo(Request $request) {
-        echo "OK";
-        return $this->convertVideoFunc($request->src, $request->pid);
-    }
-
-    public function convertVideoFunc($src, $pid) {
-        try {
-            $fileName = $src;
-            mb_internal_encoding("UTF-8");
-            $sp = explode('-', $fileName, 2);
-            if(count($sp) < 1) { return; }
-            $fname = $sp[0];
-
-            // FFMpeg
-            $fmt = new \FFMpeg\Format\Video\X264('aac');
-            $fmt->setKiloBitrate(500);
-            FFMpeg::fromDisk('video')
-                ->open($fileName)
-                ->export()
-                ->onProgress(function ($percentage) {
-                    echo "{$percentage}% transcoded";
-                })
-                ->resize(660, 370, 'height')
-                ->toDisk('convert')
-                ->inFormat($fmt)
-                ->save($fname.".mp4")
-                ->getFrameFromSeconds(2)
-                ->export()
-                ->toDisk('convert')
-                ->save($fname.".jpg")
-                ;
-
-            // SAVE TO DB
-            TPost::where('id', $pid)
-                ->update(['thumbnail' => $fname.".jpg", 'converted' => $fname.".mp4"]);
-
-        } catch(\Exception $ex) {
-            TPost::where('id', $pid)->where('title', $src)
-                ->update(['view_mode' => 0
-                    , 'error_comment' => 'Faild. Uploaded videos should be played on Windows Media Player. This will not be Public.'
-                    , 'thumbnail' => null
-                    , 'converted' => null
-                ]);
-            return "NG";
-        }
-        return "OK";
-    }
-
-    /**
-     * MAKE THUMNAME(ALL)
-     * @$fileName   File name
-     */
-    public function convertAllVideo(Request $request) {
-        
-        // 全ポストデータ取得
-        $posts = DB::table('t_post')->where('event_id', '<', 8)->get();
-        $all = count($posts);
-
-        $i = 1;
-        foreach($posts as $post) {
-            echo(" - id : ".$post->id);
-            try {
-                $fileName = $post->title;
-                mb_internal_encoding("UTF-8");
-                $sp = explode('-', $fileName, 2);
-                if(count($sp) < 1) { return; }
-                $fname = $sp[0];
-
-                // FFMpeg
-                $fmt = new \FFMpeg\Format\Video\X264('aac');
-                $fmt->setKiloBitrate(500);
-                $video = FFMpeg::fromDisk('convert')
-                    ->open($fname.".mp4")
-                    ->export()
-                    ->toDisk('convert')
-                    ->inFormat($fmt)
-                    ->save($fname."-2.mp4");
-                TPost::where('id', $post->id)
-                    ->update(['thumbnail' => $fname.".jpg", 'converted' => $fname."-2.mp4", 'error_comment' => '']);
-               
-                echo(" ... OK<br>");
-
-            } catch(\Exception $ex) {
-                echo " ... NG<br>";
-            }
-        }
-        return "OK";
-    }
-
-    /**
      * VIDEO LIST
      */
     public function list(Request $request) {
@@ -263,7 +232,7 @@ class TPostController extends Controller
 
             if ($request->has('search') && $key != '') {
                 $query->where(function($query) use ($key) {
-                    $query->where('team', 'like', '%'.$key.'%');
+                    $query->where('video_title', 'like', '%'.$key.'%');
                 })
                 ->where('view_mode', '=', 1)
                 ->where(function($query) {

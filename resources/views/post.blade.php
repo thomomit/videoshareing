@@ -12,16 +12,16 @@
                 <form class="form-movie" action="">
 
                     <dl class="form39">
-                        <dt><label for="team">TITLE</label></dt>
+                        <dt><label for="video_title">TITLE</label></dt>
                         <dd>
-                          <input class="text" name="team" id="team" type="text">
+                          <input class="text" name="video_title" id="video_title" type="text">
                         </dd>
                     </dl>
                    
                     <dl class="form19">
-                        <dt><label for="label5">PUBLIC / PRIVATE</label></dt>
+                        <dt><label for="view_mode">VIEW MODE</label></dt>
                         <dd>
-                          <select id="view" class="select" name="view" id="view">
+                          <select class="select" name="view_mode" id="view_mode">
                             <option value="1">PUBLIC</option>
                             <option value="2">PRIVATE</option>
                           </select>
@@ -29,9 +29,9 @@
                     </dl>
                     
                     <dl>
-                        <dt><label for="label7">VIDEO UPLOAD</label></dt>
+                        <dt><label for="file_name">VIDEO UPLOAD</label></dt>
                         <dd>
-                            <input type="file" class="file" value="CHOSE VIDEO" id="file-name" name="file-name" accept="video/*">
+                            <input type="file" class="file" value="CHOSE VIDEO" id="file_name" name="file_name" accept="video/*">
                         </dd>
                     </dl>
                     
@@ -51,13 +51,18 @@
                                
                                 <dl>
                                     <dt>TITLE</dt>
-                                    <dd id="teamname"></dd>
+                                    <dd id="modal_video_title"></dd>
                                 </dl>
                                 
                                 <dl>
                                   <dt>PUBLIC / PRIVATE</dt>
-                                  <dd id="show"></dd>
+                                  <dd id="modal_view_mode"></dd>
                                 </dl>
+
+                                <dl>
+                                    <dt>VIDEO</dt>
+                                    <dd id="douga"></dd>
+                                  </dl>
                                
                             </div>
                             <div id="now-loading" style="display:none">

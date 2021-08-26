@@ -18,8 +18,8 @@ class CreateTPostTable extends Migration
             $table->timestamp('create_at')->nullable();
             $table->timestamp('edit_at')->nullable();
             $table->tinyInteger('delete_flg')->nullable();
-            $table->string('team', 255)->nullable();
-            $table->text('title')->nullable();
+            $table->string('video_title', 255)->nullable();
+            $table->text('file_name')->nullable();
             $table->text('video_path')->nullable();
             $table->tinyInteger('view_mode')->nullable();
             $table->integer('view_count')->nullable();
