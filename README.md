@@ -7,6 +7,40 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## About
+A Video sharing web application with Laravel8.
+動画投稿ウェブアプリケーション Laravel8 
+
+What you can do with this App is..
+このアプリでできること
+- post videos　動画の投稿
+- edit the posts　投稿動画の編集
+- search the posts　投稿動画の検索
+- LIKE on the posts　「いいね」機能
+- show post's list　投稿動画の一覧表示
+- manage post's list　投稿動画の管理
+
+## Environment
+- OS: MacOS Big Sur
+- Framework: Laravel8
+
+## Set Up
+1. Install `npm install`
+2. Build `npm run dev`
+3. Create vendor `composer install`
+4. Watch `npm run watch-poll`
+5. Serve `php artisan serve`
+6. Make DB called "video_sharing_app"
+7. Edit ".env" ↓
+```
+DB_PASSWORD={{ THR DB PASSWORD }}
+VIDEO_PATH={{ YOUR LOCAL PASS }}/storage/uploaded/
+CONVERT_PATH={{ YOUR LOCAL PASS }}/storage/uploaded/
+```
+8. Initialize application key `php artisan key:generate`
+9. Make table `php artisan migrate`
+10. Access to `http://127.0.0.1:8000/`
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
