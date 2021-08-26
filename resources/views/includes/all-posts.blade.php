@@ -18,10 +18,12 @@
                 </div>
             </button>
 
+            <!-- VIDEO MODAL -->
             <div class="modal fade single-video" id="Modal{{ $i }}" vid="{{ $i }}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
+                            <p>Click the video to play</p>
                             <button type="button" id="modal-close{{ $i }}" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         </div>
                         <div class="modal-body">

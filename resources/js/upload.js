@@ -55,7 +55,7 @@ $('#submit').on('click', async (e) => {
         let team = $('[name=team]').val()
         let view_mode = $('[name=view]').val()
 
-        $('#sending').html("Checking data.");
+        $('#sending').html("Checking data....");
 
         var fd = new FormData();
         fd.append('name', name);
@@ -81,7 +81,7 @@ $('#submit').on('click', async (e) => {
         })
         .done(function(data) {
             if(data !== "OK") {
-                $('#sending').html("Faild. Uploaded videos should be played on Windows Media Player. This won't be Public.");
+                $('#sending').html("Faild. Videos should be the one that can be played on Windows Media Player. This won't be Public.");
             }
         });
 

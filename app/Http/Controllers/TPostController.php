@@ -245,7 +245,7 @@ class TPostController extends Controller
     /**
      * VIDEO LIST
      */
-    public function list($key = null) {
+    public function list(Request $request) {
 
         $likes = TLike::select(
             'post_id',
@@ -253,13 +253,15 @@ class TPostController extends Controller
             )
             ->groupBy('post_id');
 
+        $key = $request->input('search');
+
         $query = DB::table('t_post');
         $query
             ->leftJoinSub($likes, 't_like', function ($join) {
                 $join->on('t_post.id', '=', 't_like.post_id');
             });
 
-            if ($key) {
+            if ($request->has('search') && $key != '') {
                 $query->where(function($query) use ($key) {
                     $query->where('team', 'like', '%'.$key.'%');
                 })
@@ -267,20 +269,17 @@ class TPostController extends Controller
                 ->where(function($query) {
                     $query->where('t_post.delete_flg', '=', null)
                     ->orWhere('t_post.delete_flg', '=', 0);
-                })
-                ->inRandomOrder();
+                });
             } else {
                 $query
                 ->where('view_mode', '=', 1)
                 ->where(function($query) {
                     $query->where('t_post.delete_flg', '=', null)
                     ->orWhere('t_post.delete_flg', '=', 0);
-                })
-                ->inRandomOrder();
+                });
             }
 
         $data = $query->get();
-        // dump($data);
 
         return view("list",[
             "videos" => $data

@@ -1,6 +1,3 @@
-/* =============================================
- COMMON
-============================================= */
 html,
 body {
   margin: 0;
@@ -75,7 +72,7 @@ footer {
 
 .post-form {
   margin: 0 auto 48px;
-  width: 40%;
+  width: 500px;
 }
 
 .post-form .form-messeage {
@@ -90,6 +87,10 @@ footer {
   display: flex;
   margin: 0 0 20px 0;
   line-height: 34px;
+}
+
+.post-form form dl dt {
+  width: 300px;
 }
 
 .post-form form dl .text {
@@ -112,7 +113,6 @@ footer {
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
-  background: transparent url(/storage/image/check.png) no-repeat center right 12px/10px 9px;
   border: 0.5px solid #000;
   border-radius: 2px;
   color: inherit;
@@ -227,6 +227,11 @@ footer {
   justify-content: center;
 }
 
+.control-table tr .control-table-df .control-table-mark,
+.control-table td .control-table-df .control-table-mark {
+  margin-right: 5px;
+}
+
 .control-table tr .control-date,
 .control-table td .control-date {
   line-height: 30px;
@@ -312,11 +317,9 @@ footer {
 
 .modal .modal-content .modal-header {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
   padding: 1rem 1rem;
-  border-top-left-radius: calc(0.3rem - 1px);
-  border-top-right-radius: calc(0.3rem - 1px);
+  text-align: center;
+  font-size: 24px;
 }
 
 .modal .modal-content .modal-header .close {
@@ -325,6 +328,10 @@ footer {
   border: none;
   height: 40px;
   width: 40px;
+}
+
+.modal .modal-content .modal-header p {
+  margin: 0;
 }
 
 .modal .modal-content .modal-body {
@@ -338,9 +345,41 @@ footer {
   cursor: pointer;
 }
 
-.modal .modal-content .modal-body .confirm-box dl,
+.modal .modal-content .modal-body .confirm-box {
+  height: 200px;
+}
+
+.modal .modal-content .modal-body .confirm-box dl {
+  display: flex;
+  margin: 12px auto;
+  width: 300px;
+}
+
+.modal .modal-content .modal-body .confirm-box dl dt {
+  font-weight: 600;
+  width: 200px;
+}
+
 .modal .modal-content .modal-body .modal-footer {
   display: flex;
+}
+
+.modal .modal-content .modal-body .modal-footer button {
+  -webkit-appearance: none;
+  background-image: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  width: 200px;
+  height: 35px;
+  line-height: 35px;
+  color: #fff;
+  text-align: center;
+  background-color: #0068B2;
+  border-radius: 5px;
+  display: block;
+  box-shadow: 0 4px #0d5082;
+  margin: 48px auto 0;
 }
 
 .modal .modal-content .modal-body .venue-top-ballon-body-reaction {

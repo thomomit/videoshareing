@@ -9,10 +9,10 @@
                     <tr class="control-table-head">
                         <td class="control-table-left"></td>
                         <th style="background-color: #E6E6E6;">TITLE</th>
-                        <th style="background-color: #E6E6E6;">PUBLIC / PRIVATE</th>
-                        <th style="background-color: #F2F2F2;">DATE</th>
-                        <th style="background-color: #E6E6E6;">LIKES</th>
-                        <th style="background-color: #F2F2F2;">VIEWS</th>
+                        <th style="background-color: #F2F2F2;">PUBLIC / PRIVATE</th>
+                        <th style="background-color: #E6E6E6;">DATE</th>
+                        <th style="background-color: #F2F2F2;">LIKES</th>
+                        <th style="background-color: #E6E6E6;">VIEWS</th>
                         <th style="background-color: #F2F2F2;">ERROR<br>MESSAGE</th>
                         <th style="background-color: #E6E6E6;">EDIT</th>
                     </tr>
@@ -61,6 +61,8 @@
                             <div class="control-edit"><a href="{{ action('TPostController@edit', $video->id) }}">EDIT</a></div>
                         </td>
                     </tr>
+
+                    <!-- VIDEO MODAL -->
                     <div class="modal fade" id="Modal{{ $i }}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg modal-dialog-centered">
                             <div class="modal-content">

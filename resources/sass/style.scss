@@ -66,7 +66,7 @@ footer {
 ============================================= */
 .post-form {
   margin: 0 auto 48px;
-  width: 40%;
+  width: 500px;
   
   .form-messeage {
     text-align: center;
@@ -79,6 +79,10 @@ footer {
       display: flex;
       margin: 0 0 20px 0;
       line-height: 34px;
+
+      dt {
+        width: 300px;
+      }
 
       .text {
         appearance: none;
@@ -98,7 +102,6 @@ footer {
         -moz-appearance: none;
         -webkit-appearance: none;
         appearance: none;
-        background: transparent url(/storage/image/check.png) no-repeat center right 12px/10px 9px;
         border: 0.5px solid #000;
         border-radius: 2px;
         color: inherit;
@@ -204,6 +207,10 @@ footer {
       display: flex;
       align-items: center;
       justify-content: center;
+
+      .control-table-mark {
+        margin-right: 5px;
+      }
     }
 
     .control-date {
@@ -282,11 +289,9 @@ footer {
 
     .modal-header {
       display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
       padding: 1rem 1rem;
-      border-top-left-radius: calc(0.3rem - 1px);
-      border-top-right-radius: calc(0.3rem - 1px);
+      text-align: center;
+      font-size: 24px;
 
       .close {
         padding: 1rem 1rem;
@@ -294,6 +299,10 @@ footer {
         border: none;
         height: 40px;
         width: 40px;
+      }
+
+      p {
+        margin: 0;
       }
     }
 
@@ -307,8 +316,41 @@ footer {
         cursor: pointer;
       }
 
-      .confirm-box dl, .modal-footer {
+      .confirm-box{
+        height: 200px;
+        
+        dl {
+          display: flex;
+          margin: 12px auto;
+          width: 300px;
+
+          dt {
+            font-weight: 600;
+            width: 200px;
+          }
+        }
+      }
+
+      .modal-footer {
         display: flex;
+
+        button {
+          -webkit-appearance: none;
+          background-image: none;
+          border: none;
+          cursor: pointer;
+          text-decoration: none;
+          width: 200px;
+          height: 35px;
+          line-height: 35px;
+          color: #fff;
+          text-align: center;
+          background-color: #0068B2;
+          border-radius: 5px;
+          display: block;
+          box-shadow: 0 4px #0d5082;
+          margin: 48px auto 0;
+        }
       }
 
       .venue-top-ballon-body-reaction {

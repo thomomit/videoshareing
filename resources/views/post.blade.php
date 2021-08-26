@@ -7,7 +7,7 @@
     <div class="form">
         @csrf
         <div class="post-form">
-            <div class="form-messeage">FILL FORMS AND SUBMIT.</div>
+            <div class="form-messeage">FILL OUT THE FORM TO POST.</div>
             <div class="form-box">
                 <form class="form-movie" action="">
 
@@ -39,11 +39,12 @@
                 </form>
             </div>
 
+            <!-- COMFIRM MODAL -->
             <div class="modal fade" id="post_confirm" tabindex="-1" data-keyboard="false" data-backdrop="static" aria-labelledby="exampleModalLabel">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">COMFIRM?</h5>
+                        <div class="modal-header" style="display: initial">
+                            <p id="exampleModalLabel">COMFIRM?</p>
                         </div>
                         <div class="modal-body">
                             <div class="confirm-box">
@@ -63,24 +64,26 @@
                                 <div class="site-spinner">
                                 </div>
                                 <div>
-                                    <p id="sending">SENDING</p>
+                                    <p id="sending">SENDING....</p>
                                     <div id="msg">
-                                        <p>IT MIGHT TAKE FEW MINITES. SORRY.</p>
+                                        <p>IT MIGHT TAKE FEW MINUTES. SORRY.</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="modal-footer">
-                              <button id="no" type="button" style="display:block" class="btn btn-secondary" data-dismiss="modal">NO</button>
+                              <button id="no" type="button" style="display:block; background: #DC3546;" class="btn btn-secondary" data-dismiss="modal">NO</button>
                               <button type="submit" style="display:block" class="btn btn-primary" id="submit">YES</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- VALIDATION ERROR MODAL -->
             <div class="modal fade" id="post_denied" tabindex="-1" aria-labelledby="exampleModalLabel">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
-                        <div class="modal-header">
+                        <div class="modal-header" style="display: initial">
                             <h5 class="modal-title" id="exampleModalLabel">some has not been entered yet.</h5>
                         </div>
                         <div class="modal-body">
