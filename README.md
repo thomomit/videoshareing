@@ -7,6 +7,19 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## About
+A Video sharing web application with Laravel8.
+動画投稿ウェブアプリケーション Laravel8 
+
+What you can do with this App is..
+このアプリでできること
+- post videos　動画の投稿
+- edit the posts　投稿動画の編集
+- search the posts　投稿動画の検索
+- LIKE on the posts　「いいね」機能
+- show post's list　投稿動画の一覧表示
+- manage post's list　投稿動画の管理
+
 ## Environment
 - OS: MacOS Big Sur
 - Framework: Laravel8
